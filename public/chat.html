@@ -37,7 +37,7 @@
             <button>Enviar</button>
           </form>
 
-          <button id="send-location">Send location</button>
+          <button id="send-location">Enviar localização</button>
         </div>
       </div>
     </div>
@@ -59,14 +59,16 @@
           <span class="message__meta">{{createdAt}} </span>
         </p>
         <p>
-          <a href="{{locationUrl}}" target="_blank"> My current location</a>
+          <a href="{{locationUrl}}" target="_blank">
+            Clique aqui para ver localização de {{username}}</a
+          >
         </p>
       </div>
     </script>
 
     <script id="sidebar-template" type="text/html">
       <h2 class="room-title">{{room}}</h2>
-      <h3 class="list-title">Users</h3>
+      <h3 class="list-title">Usuários online</h3>
       <ul class="users">
         {{#users}}
         <li>{{username}}</li>

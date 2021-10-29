@@ -36,14 +36,14 @@ io.on("connection", (socket) => {
 
     socket.join(user.room);
 
-    socket.emit("message", generateMessage("Admin", "Welcome!"));
+    socket.emit("message", generateMessage("Admin", "Bem-vinde!"));
 
     //emit the event to everyone in the room except de broadcaster
     socket.broadcast
       .to(user.room)
       .emit(
         "message",
-        generateMessage("Admin", `${user.username} has joined.`)
+        generateMessage("Admin", `${user.username} entrou na sala.`)
       );
 
     io.to(user.room).emit("roomData", {
@@ -61,7 +61,7 @@ io.on("connection", (socket) => {
     const user = getUser(socket.id);
 
     if (filter.isProfane(message)) {
-      return callback("Profanity is not allowed.");
+      return callback("Palavra não permitida.");
     }
 
     //emit the event to every single connection currently avaible
@@ -86,7 +86,7 @@ io.on("connection", (socket) => {
     if (user) {
       io.to(user.room).emit(
         "message",
-        generateMessage("Admin", `${user.username} has left.`)
+        generateMessage("Admin", `${user.username} saiu da sala.`)
       );
 
       io.to(user.room).emit("roomData", {
